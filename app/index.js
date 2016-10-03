@@ -81,6 +81,7 @@ const contentSettings = require('../js/state/contentSettings')
 const privacy = require('../js/state/privacy')
 const basicAuth = require('./browser/basicAuth')
 const async = require('async')
+const tabs = require('./browser/tabs')
 
 // Used to collect the per window state when shutting down the application
 let perWindowState = []
@@ -407,6 +408,7 @@ app.on('ready', () => {
     Menu.init(initialState, null)
     return loadedPerWindowState
   }).then((loadedPerWindowState) => {
+    tabs.init()
     basicAuth.init()
     contentSettings.init()
     privacy.init()
